@@ -44,12 +44,12 @@ public class Game
         piernaDer = new Room("Te has desplazado a la pierna derecha.");
         piernaIz = new Room("Te has desplazado a la pierna izquierda.");
         // initialise room exits
-        cabeza.setExits(null, brazoDer, tronco, brazoIz);
-        brazoDer.setExits(null, null, null, cabeza);
-        brazoIz.setExits(null, cabeza, null, null);
-        tronco.setExits(cabeza, piernaDer, null, piernaIz);
-        piernaDer.setExits(null, null, null, tronco);
-        piernaIz.setExits(null,tronco, null, null);
+        cabeza.setExits(null, null, tronco, brazoIz, piernaDer);
+        brazoDer.setExits(null, null, null, cabeza, null);
+        brazoIz.setExits(null, cabeza, null, null, null);
+        tronco.setExits(cabeza, null , null, piernaIz, piernaDer);
+        piernaDer.setExits(null, null, null, tronco, null);
+        piernaIz.setExits(null,tronco, null, null, null);
 
         currentRoom = cabeza;  // start game outside       
     }
@@ -82,8 +82,6 @@ public class Game
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
-        System.out.println(currentRoom.getDescription());
-        System.out.print("Exits: ");
         printLocationInfo();
         System.out.println();
     }
@@ -166,8 +164,6 @@ public class Game
         }
         else {
             currentRoom = nextRoom;
-            System.out.println(currentRoom.getDescription());
-            System.out.print("Exits: ");
             printLocationInfo();
             System.out.println();
         }
@@ -191,6 +187,8 @@ public class Game
 
     private void printLocationInfo()
     {
+        System.out.println(currentRoom.getDescription());
+        System.out.print("Exits: ");
         if(currentRoom.northExit != null) {
             System.out.print("north ");
         }
