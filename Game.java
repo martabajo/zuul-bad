@@ -47,7 +47,7 @@ public class Game
         cabeza.setExits(null, brazoDer, tronco, brazoIz);
         brazoDer.setExits(null, null, null, cabeza);
         brazoIz.setExits(null, cabeza, null, null);
-        tronco.setExits(cabeza, piernaDer, null, null);
+        tronco.setExits(cabeza, piernaDer, null, piernaIz);
         piernaDer.setExits(null, null, null, tronco);
         piernaIz.setExits(null,tronco, null, null);
         
@@ -82,7 +82,7 @@ public class Game
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
-        System.out.println("You are " + currentRoom.getDescription());
+        System.out.println(currentRoom.getDescription());
         System.out.print("Exits: ");
         if(currentRoom.northExit != null) {
             System.out.print("north ");
@@ -137,7 +137,7 @@ public class Game
     private void printHelp() 
     {
         System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("Dentro del cuerpo humano.");
         System.out.println();
         System.out.println("Your command words are:");
         System.out.println("   go quit help");
@@ -173,11 +173,11 @@ public class Game
         }
 
         if (nextRoom == null) {
-            System.out.println("There is no door!");
+            System.out.println("No hay ninguna parte del cuerpo");
         }
         else {
             currentRoom = nextRoom;
-            System.out.println("You are " + currentRoom.getDescription());
+            System.out.println(currentRoom.getDescription());
             System.out.print("Exits: ");
             if(currentRoom.northExit != null) {
                 System.out.print("north ");
