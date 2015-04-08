@@ -49,7 +49,7 @@ public class Game
         brazoIz.setExits(null, cabeza, null, null);
         tronco.setExits(cabeza, piernaDer, null, null);
         piernaDer.setExits(null, null, null, tronco);
-        piernaIz.setExits(null, null, tronco, null);
+        piernaIz.setExits(null,tronco, null, null);
         
         currentRoom = cabeza;  // start game outside        jfa
     }
