@@ -20,7 +20,8 @@ public class Room
     private Room eastExit;
     private Room westExit;
     private Room southEastExit;
-
+    private Room northWestExit;
+    
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
@@ -40,7 +41,7 @@ public class Room
      * @param south The south exit.
      * @param west The west exit.
      */
-    public void setExits(Room north, Room east, Room south, Room west, Room southEast) 
+    public void setExits(Room north, Room east, Room south, Room west, Room southEast, Room northWest) 
     {
         if(north != null)
             northExit = north;
@@ -52,30 +53,36 @@ public class Room
             westExit = west;
         if (southEast != null)
             southEastExit = southEast;
+        if (northWest != null)
+           northWestExit = northWest;
     }
 
     public Room getExit(String coordenada)
     {
         Room direccion = null;
-        if (coordenada == "north")
+        if (coordenada.equals("north"))
         {
             direccion = northExit;  
         }
-        else  if (coordenada == "east")
+        else  if (coordenada.equals("east"))
         {
             direccion = southExit;  
         }
-        else  if (coordenada == "south")
+        else  if (coordenada.equals("south"))
         {
             direccion = southExit;  
         }
-        else  if (coordenada == "west")
+        else  if (coordenada.equals("west"))
         {
             direccion = westExit;  
         }
-        else  if (coordenada == "southEast")
+        else  if (coordenada.equals("southEast"))
         {
             direccion = southEastExit;  
+        }
+        else  if (coordenada.equals("northWest"))
+        {
+            direccion = northWestExit;  
         }
         return direccion;
     }
@@ -96,27 +103,32 @@ public class Room
      */
     public String getExitString()
     {
-        String exit = null;
+        String exit = "";
         if(northExit != null)
         {
-            exit = "north";
+            exit += " north";
         }
         if(eastExit != null)
         {
-            exit = "east";
+            exit += " east";
         }
          if(southExit != null)
         {
-            exit = "south";
+            exit += " south";
         }
          if(westExit != null)
         {
-            exit = "west";
+            exit += " west";
         }
          if(southEastExit != null)
         {
-            exit = "southEast";
+            exit += " southEast";
         }
+        if(northWestExit != null)
+        {
+            exit += " northWest";
+        }
+        
         return exit;
     }
 }
