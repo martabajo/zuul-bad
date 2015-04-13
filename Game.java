@@ -189,7 +189,7 @@ public class Game
         printLocationInfo();
     }
     
-    public void eat()
+    private void eat()
     {
        System.out.println("You have eaten now and you are not hungry any more");
     }
