@@ -113,7 +113,9 @@ public class Game
         else if (commandWord.equals("look")) {
             look();
         }
-      
+        else if (commandWord.equals("eat")) {
+            eat();
+        }
 
         return wantToQuit;
     }
@@ -131,7 +133,7 @@ public class Game
         System.out.println("Dentro del cuerpo humano.");
         System.out.println();
         parser.showAllCommands();
-        
+
     }
 
     /** 
@@ -179,13 +181,17 @@ public class Game
 
     private void printLocationInfo()
     {
-      System.out.println(currentRoom.getLongDescription());
+        System.out.println(currentRoom.getLongDescription());
     }
 
     private void look()
     {
-       printLocationInfo();
+        printLocationInfo();
     }
     
-   
+    public void eat()
+    {
+       System.out.println("You have eaten now and you are not hungry any more");
+    }
+
 }
