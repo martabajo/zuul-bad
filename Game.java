@@ -110,6 +110,9 @@ public class Game
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
         }
+        else if (commandWord.equals("look")) {
+            look();
+        }
 
         return wantToQuit;
     }
@@ -146,7 +149,6 @@ public class Game
 
         // Try to leave current room.
         Room nextRoom = currentRoom.getExit(direction);
-       
 
         if (nextRoom == null) {
             System.out.println("No hay ninguna parte del cuerpo");
@@ -176,8 +178,11 @@ public class Game
 
     private void printLocationInfo()
     {
-        System.out.println(currentRoom.getDescription());
-        System.out.print("Exits: ");
-       System.out.println(currentRoom.getExitString());
+      System.out.println(currentRoom.getLongDescription());
+    }
+
+    private void look()
+    {
+       printLocationInfo();
     }
 }

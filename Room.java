@@ -1,3 +1,4 @@
+
 /**
  * Class Room - a room in an adventure game.
  *
@@ -130,5 +131,10 @@ public class Room
         }
         
         return exit;
+    }
+    
+    public String getLongDescription()
+    {
+        return "Estás en " + getDescription() + "\n Salidas: " + getExitString();
     }
 }
