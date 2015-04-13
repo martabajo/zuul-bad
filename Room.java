@@ -22,6 +22,8 @@ public class Room
     private Room westExit;
     private Room southEastExit;
     private Room northWestExit;
+    private String descripcionObj;
+    private int peso;
     
     /**
      * Create a room described "description". Initially, it has
@@ -29,9 +31,11 @@ public class Room
      * "an open court yard".
      * @param description The room's description.
      */
-    public Room(String description) 
+    public Room(String description, String descripcionObj, int peso) 
     {
         this.description = description;
+        this.descripcionObj = descripcionObj;
+        this.peso = peso;
     }
 
     /**
@@ -135,6 +139,6 @@ public class Room
     
     public String getLongDescription()
     {
-        return "Estás en " + getDescription() + "\n Salidas: " + getExitString();
+        return "Estás en " + getDescription() + "\n Salidas: " + getExitString() + "La descripcion del objeto es: " + descripcionObj + "su peso es:" + peso;
     }
 }
