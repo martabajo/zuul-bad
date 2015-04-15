@@ -37,17 +37,17 @@ public class Game
         Room cabeza, brazoDer, brazoIz, tronco, piernaDer, piernaIz;
 
         // create the rooms
-        cabeza = new Room("Estas en la cabeza, es el inicio del juego.");
+        cabeza = new Room("cabeza, es el inicio del juego.");
         cabeza.addItem(new Item ("Casco", 1.5F));
-        brazoDer = new Room("Te has desplazado al brazo derecho.");
+        brazoDer = new Room("brazo derecho.");
         brazoDer.addItem(new Item ("Escayola", 0.6F));
-        brazoIz = new Room("Te has desplazado al brazo izquierdo.");
+        brazoIz = new Room("brazo izquierdo.");
         brazoIz.addItem(new Item("Pulsera", 0.8F));
-        tronco = new Room("Estas en el tronco");
+        tronco = new Room("tronco");
         tronco.addItem(new Item("Cazadora", 1.6F));
-        piernaDer = new Room("Te has desplazado a la pierna derecha.");
+        piernaDer = new Room("pierna derecha.");
         piernaDer.addItem(new Item("No hay objeto", 0.0F));
-        piernaIz = new Room("Te has desplazado a la pierna izquierda.");
+        piernaIz = new Room("pierna izquierda.");
         piernaIz.addItem(new Item("No hay objeto", 0.0F));
         // initialise room exits
         cabeza.setExits("east", brazoDer);
@@ -121,6 +121,9 @@ public class Game
         }
         else if (commandWord.equals("eat")) {
             eat();
+        }
+        else if (commandWord.equals("back")) {
+            back();
         }
 
         return wantToQuit;
@@ -199,5 +202,11 @@ public class Game
     {
        System.out.println("You have eaten now and you are not hungry any more");
     }
+    
+    private void back()
+    {
+        printLocationInfo();
+    }
+    
 
 }

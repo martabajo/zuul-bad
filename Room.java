@@ -93,7 +93,7 @@ public class Room
 
     public String getLongDescription()
     {
-        String longDescription = "Tu estas " + description + ".\n" + getExitString() + "Existen estos objetos: " + mostrarDescripObj();
+        String longDescription = "Tu estas en: " + description + "\n Las salidas son: " + getExitString() + "\n" + mostrarDescripObj();
 
         return longDescription;
     }

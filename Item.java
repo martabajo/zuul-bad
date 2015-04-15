@@ -28,6 +28,6 @@ public class Item
 
     public String objetoToString()    
     {
-      return "El nombre del objeto es: " + nombreObjeto + "el peso es: " + peso;
+      return "Hay: " + nombreObjeto + " Que pesa: " + peso;
     }
 }
