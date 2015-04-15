@@ -1,4 +1,5 @@
-
+import java.util.HashMap;
+import java.util.Set;
 /**
  * Class Room - a room in an adventure game.
  *
@@ -16,14 +17,10 @@
 public class Room 
 {
     private String description;
-    private Room northExit;
-    private Room southExit;
-    private Room eastExit;
-    private Room westExit;
-    private Room southEastExit;
-    private Room northWestExit;
+   private HashMap<String, Room> exits;
+    
     private String descripcionObj;
-    private int peso;
+    private float peso;
     
     /**
      * Create a room described "description". Initially, it has
@@ -31,9 +28,10 @@ public class Room
      * "an open court yard".
      * @param description The room's description.
      */
-    public Room(String description, String descripcionObj, int peso) 
+    public Room(String description, String descripcionObj, float peso) 
     {
         this.description = description;
+        exits = new HashMap<>();
         this.descripcionObj = descripcionObj;
         this.peso = peso;
     }
@@ -46,50 +44,14 @@ public class Room
      * @param south The south exit.
      * @param west The west exit.
      */
-    public void setExits(Room north, Room east, Room south, Room west, Room southEast, Room northWest) 
+    public void setExits(String direction, Room nextRoom) 
     {
-        if(north != null)
-            northExit = north;
-        if(east != null)
-            eastExit = east;
-        if(south != null)
-            southExit = south;
-        if(west != null)
-            westExit = west;
-        if (southEast != null)
-            southEastExit = southEast;
-        if (northWest != null)
-           northWestExit = northWest;
+        exits.put(direction, nextRoom);
     }
 
-    public Room getExit(String coordenada)
+    public Room getExit(String direction)
     {
-        Room direccion = null;
-        if (coordenada.equals("north"))
-        {
-            direccion = northExit;  
-        }
-        else  if (coordenada.equals("east"))
-        {
-            direccion = southExit;  
-        }
-        else  if (coordenada.equals("south"))
-        {
-            direccion = southExit;  
-        }
-        else  if (coordenada.equals("west"))
-        {
-            direccion = westExit;  
-        }
-        else  if (coordenada.equals("southEast"))
-        {
-            direccion = southEastExit;  
-        }
-        else  if (coordenada.equals("northWest"))
-        {
-            direccion = northWestExit;  
-        }
-        return direccion;
+        return exits.get(direction);
     }
 
     /**
@@ -108,37 +70,21 @@ public class Room
      */
     public String getExitString()
     {
-        String exit = "";
-        if(northExit != null)
-        {
-            exit += " north";
-        }
-        if(eastExit != null)
-        {
-            exit += " east";
-        }
-         if(southExit != null)
-        {
-            exit += " south";
-        }
-         if(westExit != null)
-        {
-            exit += " west";
-        }
-         if(southEastExit != null)
-        {
-            exit += " southEast";
-        }
-        if(northWestExit != null)
-        {
-            exit += " northWest";
-        }
+        Set<String> nameOfDirection = exits.keySet();
+        String exitsDescription = "Exit ";
+        for (String direction : nameOfDirection){
+            exitsDescription += direction + " ";
         
-        return exit;
+        }
+        return exitsDescription;
     }
     
     public String getLongDescription()
     {
-        return "Estás en " + getDescription() + "\n Salidas: " + getExitString() + "La descripcion del objeto es: " + descripcionObj + "su peso es:" + peso;
+        String longDescription = "Tu estas " + description + ".\n" + getExitString();
+        longDescription += "There is 1 item :\n";
+        longDescription += "- " + descripcionObj + " ( " + peso + "kg.)";
+        return longDescription;
+    
     }
 }

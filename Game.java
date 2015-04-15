@@ -37,19 +37,19 @@ public class Game
         Room cabeza, brazoDer, brazoIz, tronco, piernaDer, piernaIz;
 
         // create the rooms
-        cabeza = new Room("Estas en la cabeza, es el inicio del juego.");
-        brazoDer = new Room("Te has desplazado al brazo derecho.");
-        brazoIz = new Room("Te has desplazado al brazo izquierdo.");
-        tronco = new Room("Estas en el tronco");
-        piernaDer = new Room("Te has desplazado a la pierna derecha.");
-        piernaIz = new Room("Te has desplazado a la pierna izquierda.");
+        cabeza = new Room("Estas en la cabeza, es el inicio del juego.", "Tiene un casco", 1.5F);
+        brazoDer = new Room("Te has desplazado al brazo derecho.", "Esta escayolado", 0.6F);
+        brazoIz = new Room("Te has desplazado al brazo izquierdo.", "Tiene una pulsera" , 0.8F);
+        tronco = new Room("Estas en el tronco", "Lleva puesta una cazadora", 1.6F);
+        piernaDer = new Room("Te has desplazado a la pierna derecha.", "No lleva nada", 0.0F);
+        piernaIz = new Room("Te has desplazado a la pierna izquierda.", "No lleva nada", 0.0F);
         // initialise room exits
-        cabeza.setExits(null, null, tronco, brazoIz, piernaDer, null);
-        brazoDer.setExits(null, null, null, cabeza, null, cabeza);
-        brazoIz.setExits(null, cabeza, null, null, null, null);
-        tronco.setExits(cabeza, null , null, piernaIz, piernaDer, null);
-        piernaDer.setExits(null, null, null, tronco, null, tronco);
-        piernaIz.setExits(null,tronco, null, null, null, null);
+        cabeza.setExits("east", brazoDer);
+        brazoDer.setExits("north", cabeza);
+        brazoIz.setExits("north", cabeza);
+        tronco.setExits("south", piernaDer);
+        piernaDer.setExits("northWest", tronco);
+        piernaIz.setExits("northWest", tronco);
 
         currentRoom = cabeza;  // start game outside       
     }
