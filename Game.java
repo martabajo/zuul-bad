@@ -37,12 +37,18 @@ public class Game
         Room cabeza, brazoDer, brazoIz, tronco, piernaDer, piernaIz;
 
         // create the rooms
-        cabeza = new Room("Estas en la cabeza, es el inicio del juego.", "Tiene un casco", 1.5F);
-        brazoDer = new Room("Te has desplazado al brazo derecho.", "Esta escayolado", 0.6F);
-        brazoIz = new Room("Te has desplazado al brazo izquierdo.", "Tiene una pulsera" , 0.8F);
-        tronco = new Room("Estas en el tronco", "Lleva puesta una cazadora", 1.6F);
-        piernaDer = new Room("Te has desplazado a la pierna derecha.", "No lleva nada", 0.0F);
-        piernaIz = new Room("Te has desplazado a la pierna izquierda.", "No lleva nada", 0.0F);
+        cabeza = new Room("Estas en la cabeza, es el inicio del juego.");
+        cabeza.addItem(new Item ("Casco", 1.5F));
+        brazoDer = new Room("Te has desplazado al brazo derecho.");
+        brazoDer.addItem(new Item ("Escayola", 0.6F));
+        brazoIz = new Room("Te has desplazado al brazo izquierdo.");
+        brazoIz.addItem(new Item("Pulsera", 0.8F));
+        tronco = new Room("Estas en el tronco");
+        tronco.addItem(new Item("Cazadora", 1.6F));
+        piernaDer = new Room("Te has desplazado a la pierna derecha.");
+        piernaDer.addItem(new Item("No hay objeto", 0.0F));
+        piernaIz = new Room("Te has desplazado a la pierna izquierda.");
+        piernaIz.addItem(new Item("No hay objeto", 0.0F));
         // initialise room exits
         cabeza.setExits("east", brazoDer);
         brazoDer.setExits("north", cabeza);

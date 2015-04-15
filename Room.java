@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Set;
+import java.util.ArrayList;
 /**
  * Class Room - a room in an adventure game.
  *
@@ -17,23 +18,20 @@ import java.util.Set;
 public class Room 
 {
     private String description;
-   private HashMap<String, Room> exits;
-    
-    private String descripcionObj;
-    private float peso;
-    
+    private HashMap<String, Room> exits;
+    private ArrayList<Item> items;
+
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
      * "an open court yard".
      * @param description The room's description.
      */
-    public Room(String description, String descripcionObj, float peso) 
+    public Room(String description) 
     {
         this.description = description;
         exits = new HashMap<>();
-        this.descripcionObj = descripcionObj;
-        this.peso = peso;
+        items = new ArrayList<>();
     }
 
     /**
@@ -74,17 +72,29 @@ public class Room
         String exitsDescription = "Exit ";
         for (String direction : nameOfDirection){
             exitsDescription += direction + " ";
-        
+
         }
         return exitsDescription;
     }
+
+    public String mostrarDescripObj()
+    {
+        String descripcion = "";
+        for(Item item: items){
+            descripcion += item.objetoToString() + "\n";   
+        }
+        return descripcion;
+    }
     
+    public void addItem(Item item)
+    {
+        items.add(item);
+    }
+
     public String getLongDescription()
     {
-        String longDescription = "Tu estas " + description + ".\n" + getExitString();
-        longDescription += "There is 1 item :\n";
-        longDescription += "- " + descripcionObj + " ( " + peso + "kg.)";
+        String longDescription = "Tu estas " + description + ".\n" + getExitString() + "Existen estos objetos: " + mostrarDescripObj();
+
         return longDescription;
-    
     }
 }
